@@ -1,6 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:testapp/widgets/dice.dart';
-import 'dart:math';
+import 'dart:math' as math;
 
 int getRandomInt(int min, int max) {
   final random = Random();
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Dice roll',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.dark().copyWith(secondaryContainer: Colors.red),
+            ColorScheme.light().copyWith(secondaryContainer: Colors.red),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'World Colission'),
@@ -54,19 +56,32 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'Dice roll: ',
               style: TextStyle(
-                  color: Colors.red, fontWeight: FontWeight.bold, fontSize: 40),
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40),
             ),
-            Dice(num: _counter),
+            GestureDetector(
+                onTap: () => setState(() {
+                      _counter = Random().nextInt(6) + 1;
+                    }),
+                child: Dice(num: _counter)),
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() {
-          _counter = Random().nextInt(6) + 1;
-        }),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+          onPressed: () => setState(() {
+                _counter = Random().nextInt(6) + 1;
+              }),
+          backgroundColor: Color.fromARGB(255, 117, 16, 204),
+          Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.rotationY(math.pi),
+            child: Icon(
+              Icons.rotate_left,
+              size: 100,
+            ),
+          )),
     );
   }
 }

@@ -15,19 +15,14 @@ class DiceState extends State<Dice> {
       width: 100,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.deepOrange,
+        color: Colors.blueGrey[300],
         borderRadius: BorderRadius.circular(100),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.5),
-              blurRadius: 10,
-              spreadRadius: 3)
-        ],
       ),
       child: Center(
         child: Text(
           '${widget.num}',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
