@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Dice roll',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 55, 141, 64)),
+            ColorScheme.light().copyWith(secondaryContainer: Colors.red),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'World Colission'),
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: const TextStyle(
-                  color: Color.fromARGB(255, 0, 100, 30), fontSize: 100),
+                  color: Color.fromARGB(255, 13, 124, 221), fontSize: 100),
             ),
           ],
         ),
