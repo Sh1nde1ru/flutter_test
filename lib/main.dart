@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/widgets/dice.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Dice roll',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.light().copyWith(secondaryContainer: Colors.red),
+            ColorScheme.dark().copyWith(secondaryContainer: Colors.red),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'World Colission'),
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter += 2;
+      _counter++;
     });
   }
 
@@ -52,12 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const Text(
               'Counter: ',
+              style: TextStyle(
+                  color: Colors.red, fontWeight: FontWeight.bold, fontSize: 40),
             ),
-            Text(
-              '$_counter',
-              style: const TextStyle(
-                  color: Color.fromARGB(255, 13, 124, 221), fontSize: 100),
-            ),
+            Dice(num: _counter),
           ],
         ),
       ),
