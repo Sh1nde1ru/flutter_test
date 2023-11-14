@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/widgets/dice.dart';
+import 'dart:math';
+
+int getRandomInt(int min, int max) {
+  final random = Random();
+  return min + random.nextInt(max - min + 1);
+}
 
 void main() {
   runApp(const MyApp());
@@ -34,12 +40,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Counter: ',
+              'Dice roll: ',
               style: TextStyle(
                   color: Colors.red, fontWeight: FontWeight.bold, fontSize: 40),
             ),
@@ -61,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => setState(() {
+          _counter = Random().nextInt(6) + 1;
+        }),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
